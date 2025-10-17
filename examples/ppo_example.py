@@ -6,7 +6,7 @@ from wandb.integration.sb3 import WandbCallback
 import wandb
 
 # toggle this to train or evaluate
-train = False
+train = True
 
 if train:
     run = wandb.init(
