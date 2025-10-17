@@ -1,0 +1,11 @@
+conda create -n f1tenth python=3.8
+conda activate f1tenth
+conda install -c conda-forge gym=0.19.0 -y
+conda install -c conda-forge pillow numba pyyaml pyopengl -y
+pip install -e . --no-deps
+
+
+
+# docker
+docker build -t f1tenth_gym_container -f Dockerfile .
+docker run --gpus all -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix f1tenth_gym_container
