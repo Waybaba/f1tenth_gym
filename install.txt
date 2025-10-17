@@ -1,10 +1,18 @@
-conda create -n f1tenth python=3.8
+# Create conda environment with Python 3.9 (required by pyproject.toml)
+conda create -n f1tenth python=3.9 -y
 conda activate f1tenth
-conda install -c conda-forge gym=0.19.0 -y
-conda install -c conda-forge pillow numba pyyaml pyopengl -y
+
+# Install core dependencies via conda-forge
+conda install -c conda-forge gymnasium=0.29.1 pillow numba pyyaml pyopengl scipy -y
+
+# Install additional dependencies for RL examples
+pip install stable-baselines3 wandb tensorboard opencv-python yamldataclassconfig
+
+# Install the f1tenth_gym package itself (--no-deps to avoid conflicts)
 pip install -e . --no-deps
 
-
+# Test the installation
+python -c "import gymnasium as gym; import f1tenth_gym; print('✅ Installation successful!')"
 
 # docker
 docker build -t f1tenth_gym_container -f Dockerfile .

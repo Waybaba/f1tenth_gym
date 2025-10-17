@@ -172,6 +172,9 @@ cython_debug/
 
 **/maps/*
 
+# Wandb logs and models
+wandb/
 examples/wandb
 examples/models
 examples/runs
+*.wandb
